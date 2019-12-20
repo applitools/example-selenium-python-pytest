@@ -1,2 +1,2 @@
 webdriver-manager==1.7
-eyes-selenium>=4.1.*
+eyes-selenium>=4.1.3

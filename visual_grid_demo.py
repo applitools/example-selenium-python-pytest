@@ -63,7 +63,7 @@ except Exception as e:
     print(str(e))
     # If the test was aborted before eyes.close / eyes.close_async was called, ends the test
     # as aborted.
-    eyes.abort()
+    eyes.abort_async()
 finally:
     driver.quit()
     results = visual_grid_runner.get_all_test_results()
