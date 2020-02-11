@@ -22,16 +22,17 @@ driver = Chrome(ChromeDriverManager().install())
 logger.set_logger(logger.StdoutLogger())
 
 # Create SeleniumConfiguration.
-conf = (Configuration()
-        .set_api_key("YOU API KEY")
-        .set_app_name("Blank App")
-        .set_test_name("Smoke Test via Visual Grid")
-        .set_batch(BatchInfo("VIP Browser combo batch"))
-        .add_browser(800, 600, BrowserType.CHROME)
-        .add_browser(700, 500, BrowserType.CHROME)
-        .add_browser(1200, 800, BrowserType.FIREFOX)
-        .add_browser(1600, 1200, BrowserType.FIREFOX)
-        .add_device_emulation(DeviceName.iPhone_4))
+conf = (
+    Configuration()
+    .set_api_key("YOU API KEY")
+    .set_app_name("Blank App")
+    .set_test_name("Smoke Test via Visual Grid")
+    .set_batch(BatchInfo("VIP Browser combo batch"))
+    .add_browser(800, 600, BrowserType.CHROME)
+    .add_browser(700, 500, BrowserType.FIREFOX)
+    .add_browser(1200, 800, BrowserType.SAFARI)
+    .add_device_emulation(DeviceName.iPhone_4)
+)
 
 # Set the configuration object to eyes
 eyes.set_configuration(conf)
@@ -55,7 +56,8 @@ try:
     print(
         "Please wait... we are now: \n1. Uploading resources, \n2. Rendering in Visual Grid, "
         "and \n3. Using Applitools A.I. to validate the checkpoints. \nIt'll take about 30 "
-        "secs to a minute...")
+        "secs to a minute..."
+    )
 
     # Send close task
     eyes.close_async()
