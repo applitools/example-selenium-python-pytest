@@ -1,5 +1,7 @@
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import Chrome
+import os
+
 
 from applitools.selenium import (
     logger,
@@ -13,9 +15,9 @@ from applitools.selenium import (
 )
 
 # Create a runner with concurrency of 10
-visual_grid_runner = VisualGridRunner(10)
-# Initialize Eyes with Visual Grid Runner
-eyes = Eyes(visual_grid_runner)
+ultrafast_grid_runner = VisualGridRunner(10)
+# Initialize Eyes with Ultrafast Grid Runner
+eyes = Eyes(ultrafast_grid_runner)
 
 # Create a new Webdriver, ChromeDriverManager is uses for detect or download the chromedriver
 driver = Chrome(ChromeDriverManager().install())
@@ -24,14 +26,14 @@ logger.set_logger(logger.StdoutLogger())
 # Create SeleniumConfiguration.
 (
     eyes.configure
-        .set_api_key("YOU API KEY")
+        .set_api_key(os.environ['APPLITOOLS_API_KEY'])
         .set_app_name("Blank App")
-        .set_test_name("Smoke Test via Visual Grid")
+        .set_test_name("Smoke Test via Ultrafast Grid")
         .set_batch(BatchInfo("VIP Browser combo batch"))
         .add_browser(800, 600, BrowserType.CHROME)
         .add_browser(700, 500, BrowserType.FIREFOX)
         .add_browser(1200, 800, BrowserType.SAFARI)
-        .add_device_emulation(DeviceName.iPhone_4)
+        .add_device_emulation(DeviceName.iPhone_X)
 )
 
 
@@ -52,7 +54,7 @@ try:
     eyes.check("Step 2 - App Page", Target.window().fully())
 
     print(
-        "Please wait... we are now: \n1. Uploading resources, \n2. Rendering in Visual Grid, "
+        "Please wait... we are now: \n1. Uploading resources, \n2. Rendering in Ultrafast Grid, "
         "and \n3. Using Applitools A.I. to validate the checkpoints. \nIt'll take about 30 "
         "secs to a minute..."
     )
@@ -66,5 +68,5 @@ except Exception as e:
     eyes.abort_async()
 finally:
     driver.quit()
-    results = visual_grid_runner.get_all_test_results()
+    results = ultrafast_grid_runner.get_all_test_results()
     print(results)
