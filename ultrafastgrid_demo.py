@@ -17,7 +17,7 @@ from applitools.selenium import (
 def set_up(eyes):
 
     # You can get your api key from the Applitools dashboard
-    eyes.configure.set_api_key("97ELuwdIiAilbeumIilysV8yY24tygCeRFFTYEBO7EfE110")
+    eyes.configure.set_api_key("APPLITOOLS_API_KEY")
 
     # create a new batch info instance and set it to the configuration
     eyes.configure.set_batch(BatchInfo("Ultrafast Batch"))
@@ -47,17 +47,18 @@ def ultra_fast_test(web_driver, eyes):
 
         # check the login page with fluent api, see more info here
         # https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
-        eyes.check(Target.window().fully().withName("Login page"))
+        eyes.check("", Target.window().fully().with_name("Login page"))
 
         web_driver.find_element_by_id("log-in").click()
 
         # Check the app page
-        eyes.check(Target.window().fully().withName("App page"))
+        eyes.check("", Target.window().fully().with_name("App page"))
 
         # Call Close on eyes to let the server know it should display the results
-        eyes.closeAsync()
-    except Exception:
-        eyes.abortAsync()
+        eyes.close_async()
+    except Exception as e:
+        eyes.abort_async()
+        print(e)
 
 
 def tear_down(web_driver, runner):
@@ -67,7 +68,7 @@ def tear_down(web_driver, runner):
     # we pass false to this method to suppress the exception that is thrown if we
     # find visual differences
     all_test_results = runner.get_all_test_results(False)
-    print(all_test_results + "\n")
+    print(all_test_results)
 
 
 # Create a new chrome web driver
