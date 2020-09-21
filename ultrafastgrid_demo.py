@@ -67,7 +67,7 @@ def tear_down(web_driver, runner):
 
     # we pass false to this method to suppress the exception that is thrown if we
     # find visual differences
-    all_test_results = runner.get_all_test_results(False)
+    all_test_results = runner.get_all_test_results()
     print(all_test_results)
 
 
