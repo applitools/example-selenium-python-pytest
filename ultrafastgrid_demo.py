@@ -42,7 +42,7 @@ def ultra_fast_test(web_driver, eyes):
 
         # Call Open on eyes to initialize a test session
         eyes.open(
-            web_driver, "Demo App", "Ultrafast grid demo", {"width": 800, "height": 600}
+            web_driver, "Demo App - python", "Ultrafast grid demo", {"width": 800, "height": 600}
         )
 
         # check the login page with fluent api, see more info here
