@@ -15,10 +15,6 @@ from applitools.selenium import (
 
 
 def set_up(eyes):
-
-    # You can get your api key from the Applitools dashboard
-    eyes.configure.set_api_key("APPLITOOLS_API_KEY")
-
     # create a new batch info instance and set it to the configuration
     eyes.configure.set_batch(BatchInfo("Ultrafast Batch"))
 
