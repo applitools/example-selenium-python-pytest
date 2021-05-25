@@ -25,4 +25,4 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Run the tests
-        run: pytest tutorial.py
+        run: pytest ultrafastgrid_tutorial.py
