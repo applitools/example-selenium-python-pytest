@@ -76,7 +76,7 @@ def eyes_setup(runner, batch_info):
 
 def test_ultra_fast(eyes, driver):
     # Navigate to the url we want to test
-    driver.get("https://demo.applitools.com/index_v2.html")
+    driver.get("https://demo.applitools.com")
 
     # Call Open on eyes to initialize a test session
     eyes.open(driver, "Demo App - Python", "Ultrafast grid demo", {"width": 800, "height": 600})
