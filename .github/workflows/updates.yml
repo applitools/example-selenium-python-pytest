@@ -28,7 +28,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run the test
-        run: pytest tutorial.py
+        run: pytest ultrafastgrid_tutorial.py
 
       - uses: mikeal/publish-to-github-action@master
         env:
