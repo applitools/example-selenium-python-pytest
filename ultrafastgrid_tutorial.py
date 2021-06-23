@@ -18,7 +18,7 @@ def batch_info():
     """
     Use one BatchInfo for all tests inside module
     """
-    return BatchInfo("Ultrafast Batch")
+    return BatchInfo("Demo Batch - Selenium for Python - Ultrafast")
 
 
 @pytest.fixture(name="driver", scope="function")
@@ -79,7 +79,7 @@ def test_ultra_fast(eyes, driver):
     driver.get("https://demo.applitools.com")
 
     # Call Open on eyes to initialize a test session
-    eyes.open(driver, "Demo App - Python - UFG", "Ultrafast grid demo", {"width": 800, "height": 600})
+    eyes.open(driver, "Demo App - Selenium for Python - Ultrafast", "Smoke Test - Selenium for Python - Ultrafast", {"width": 800, "height": 600})
 
     # check the login page with fluent api, see more info here
     # https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
