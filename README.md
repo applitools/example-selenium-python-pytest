@@ -37,7 +37,7 @@ to your [account's API key](https://applitools.com/tutorials/getting-started/set
 and then run:
 
 ```
-python3 -m pytest tests
+python3 -m pytest -s -v tests
 ```
 
 **For full instructions on running this project, take our
