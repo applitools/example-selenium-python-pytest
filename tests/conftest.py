@@ -69,7 +69,7 @@ def batch_info():
 @pytest.fixture(scope='session')
 def configuration(api_key: str, batch_info: BatchInfo):
   """
-  Creates a configuration for Applitools Eyes.
+  Creates a configuration for Applitools Eyes to test 3 desktop browsers and 2 mobile devices.
   """
 
   # Construct the object
@@ -141,7 +141,7 @@ def eyes(
 
   eyes = Eyes(runner)
   eyes.set_configuration(configuration)
-  
+
   eyes.open(
     driver=webdriver,
     app_name='ACME Bank Web App',
