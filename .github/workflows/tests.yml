@@ -1,28 +1,31 @@
-name: CI
+name: Run all tests
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  HEADLESS: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-python@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Install Python package dependencies
+      - name: Install dependencies
         run: pip3 install -r requirements.txt
 
-      - name: Run the tests
-        run: pytest ultrafastgrid_tutorial.py
+      - name: Execute tests
+        run: python3 -m pytest tests
