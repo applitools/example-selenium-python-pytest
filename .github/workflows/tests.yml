@@ -28,4 +28,4 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Execute tests
-        run: python3 -m pytest tests
+        run: python3 -m pytest -s -v tests
