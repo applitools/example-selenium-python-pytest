@@ -23,6 +23,7 @@ To run this example project, you'll need:
 3. A good Python editor like [Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
    or [PyCharm](https://www.jetbrains.com/pycharm/).
 4. An up-to-date version of [Google Chrome](https://www.google.com/chrome/downloads/).
+5. A corresponding version of [ChromeDriver](https://chromedriver.chromium.org/downloads).
 
 To install dependencies, run:
 
