@@ -13,8 +13,6 @@ import pytest
 
 from applitools.selenium import *
 from selenium.webdriver import Chrome, ChromeOptions
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 
 
 # --------------------------------------------------------------------------------
@@ -98,15 +96,6 @@ def configuration(api_key: str, batch_info: BatchInfo):
   return config
 
 
-@pytest.fixture(scope='session')
-def chromedriver_service():
-  """
-  Sets up ChromeDriver and returns a Service object for initializing WebDriver objects.
-  """
-  path = ChromeDriverManager().install()
-  return Service(path)
-
-
 # --------------------------------------------------------------------------------
 # Function-Scope Fixtures
 #   These fixtures run one time before each test that calls them.
@@ -114,7 +103,7 @@ def chromedriver_service():
 # --------------------------------------------------------------------------------
 
 @pytest.fixture(scope='function')
-def webdriver(headless: bool, chromedriver_service: Service):
+def webdriver(headless: bool):
   """
   Creates a WebDriver object for Chrome.
   Even though this test will run visual checkpoints on different browsers in the Ultrafast Grid,
@@ -123,7 +112,7 @@ def webdriver(headless: bool, chromedriver_service: Service):
   """
   options = ChromeOptions()
   options.headless = headless
-  driver = Chrome(service=chromedriver_service, options=options)
+  driver = Chrome(options=options)
   yield driver
   driver.quit()
 
