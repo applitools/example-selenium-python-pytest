@@ -34,7 +34,7 @@ pip install -r requirements.txt
 The main test case spec is [`test_acme_bank.py`](tests/test_acme_bank.py).
 
 To execute tests, set the `APPLITOOLS_API_KEY` environment variable
-to your [account's API key](https://applitools.com/tutorials/getting-started/setting-up-your-environment.html),
+to your [account's API key](https://applitools.com/tutorials/guides/getting-started/registering-an-account),
 and then run:
 
 ```
