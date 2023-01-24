@@ -59,7 +59,7 @@ def batch_info():
   """
   Creates a new batch for tests.
   A batch is the collection of visual checkpoints for a test suite.
-  Batches are displayed in the dashboard, so use meaningful names.
+  Batches are displayed in the Eyes Test Manager, so use meaningful names.
   """
   return BatchInfo("Example: Selenium Python pytest with the Ultrafast Grid")
 
