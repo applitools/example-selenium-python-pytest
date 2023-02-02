@@ -126,6 +126,18 @@ def eyes(
   """
   Creates the Applitools Eyes object connected to the VisualGridRunner and set its configuration.
   Then, opens Eyes to start visual testing before the test, and closes Eyes at the end of the test.
+  
+  Opening Eyes requires 4 arguments:
+    1. The WebDriver object to "watch".
+    2. The name of the application under test.
+       All tests for the same app should share the same app name.
+       Set this name wisely: Applitools features rely on a shared app name across tests.
+    3. The name of the test case for the given application.
+       Additional unique characteristics of the test may also be specified as part of the test name,
+       such as localization information ("Home Page - EN") or different user permissions ("Login by admin").
+    4. The viewport size for the local browser.
+       Eyes will resize the web browser to match the requested viewport size.
+       This parameter is optional but encouraged in order to produce consistent results.
   """
 
   eyes = Eyes(runner)
