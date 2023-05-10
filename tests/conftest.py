@@ -18,10 +18,13 @@ from selenium.webdriver import Chrome, ChromeOptions, Remote
 
 # --------------------------------------------------------------------------------
 # Runner Settings
+#   These could be set by environment variables or other input mechanisms.
+#   They are hard-coded here to keep the example project simple.
 # --------------------------------------------------------------------------------
 
 USE_ULTRAFAST_GRID = True
 USE_EXECUTION_CLOUD = False
+HEADLESS = False
 
 
 # --------------------------------------------------------------------------------
@@ -36,17 +39,6 @@ def api_key():
   Reads the Applitools API key from an environment variable.
   """
   return os.getenv('APPLITOOLS_API_KEY')
-
-
-@pytest.fixture(scope='session')
-def headless():
-  """
-  Reads the headless mode setting from an environment variable.
-  Uses headless mode for Continuous Integration (CI) execution.
-  Uses headed mode for local development.
-  """
-  h = os.getenv('HEADLESS', default='false')
-  return h.lower() == 'true'
 
 
 @pytest.fixture(scope='session')
@@ -120,14 +112,14 @@ def configuration(api_key: str, batch_info: BatchInfo):
 # --------------------------------------------------------------------------------
 
 @pytest.fixture(scope='function')
-def webdriver(headless: bool):
+def webdriver():
   """
   Creates a WebDriver object for Chrome.
   After the test function finishes execution, quits the browser.
   """
 
   options = ChromeOptions()
-  options.headless = headless
+  options.headless = HEADLESS
 
   if USE_EXECUTION_CLOUD:
     driver = Remote(
