@@ -104,10 +104,10 @@ def configuration(api_key: str, batch_info: BatchInfo):
     config.add_browser(1600, 1200, BrowserType.FIREFOX)
     config.add_browser(1024, 768, BrowserType.SAFARI)
 
-    # Add 2 mobile emulation devices with different orientations for cross-browser testing in the Ultrafast Grid.
-    # Other mobile devices are available, including iOS.
-    config.add_device_emulation(DeviceName.Pixel_2, ScreenOrientation.PORTRAIT)
-    config.add_device_emulation(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE)
+    # Add 2 mobile browsers with different orientations for cross-browser testing in the Ultrafast Grid.
+    # Other mobile devices are available.
+    config.add_browser(IosDeviceInfo(IosDeviceName.iPhone_11, ScreenOrientation.PORTRAIT))
+    config.add_browser(ChromeEmulationInfo(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE))
 
   # Return the configuration object
   return config
