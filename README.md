@@ -3,8 +3,7 @@
 This is the example project for the [Selenium Python pytest tutorial](https://applitools.com/tutorials/quickstart/web/selenium/python).
 It shows how to start automating visual tests
 with [Applitools Eyes](https://applitools.com/platform/eyes/)
-and the [Ultrafast Grid](https://applitools.com/platform/ultrafast-grid/)
-using [Selenium](https://www.selenium.dev/) in Python.
+and [Selenium WebDriver](https://www.selenium.dev/) in Python.
 
 It uses:
 
@@ -14,7 +13,11 @@ It uses:
 * [Google Chrome](https://www.google.com/chrome/downloads/) as the local browser for testing
 * [pip](https://packaging.python.org/en/latest/tutorials/installing-packages/) for dependency management
 * [Applitools Eyes](https://applitools.com/platform/eyes/) for visual testing
+
+It can also run tests with:
+
 * [Applitools Ultrafast Grid](https://applitools.com/platform/ultrafast-grid/) for cross-browser execution
+* [Applitools Execution Cloud](https://applitools.com/platform/execution-cloud/) for self-healing remote WebDriver sessions
 
 To run this example project, you'll need:
 
@@ -32,6 +35,8 @@ pip install -r requirements.txt
 ```
 
 The main test case spec is [`test_acme_bank.py`](tests/test_acme_bank.py).
+By default, the project will run tests with Ultrafast Grid but not Execution Cloud.
+You can change these settings in [`conftest.py`](tests/conftest.py).
 
 To execute tests, set the `APPLITOOLS_API_KEY` environment variable
 to your [account's API key](https://applitools.com/tutorials/guides/getting-started/registering-an-account),
