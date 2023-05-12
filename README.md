@@ -1,4 +1,4 @@
-# Applitools Example: Selenium Python with pytest
+# Applitools Example: Selenium in Python with pytest
 
 This is the example project for the [Selenium Python pytest tutorial](https://applitools.com/tutorials/quickstart/web/selenium/python).
 It shows how to start automating visual tests
