@@ -67,7 +67,9 @@ def batch_info():
   A batch is the collection of visual checkpoints for a test suite.
   Batches are displayed in the Eyes Test Manager, so use meaningful names.
   """
-  return BatchInfo("Example: Selenium Python pytest with the Ultrafast Grid")
+  
+  runner_name = "Ultrafast Grid" if USE_ULTRAFAST_GRID else "Classic runner"
+  return BatchInfo(f"Example: Selenium Python pytest with the {runner_name}")
 
 
 @pytest.fixture(scope='session')
