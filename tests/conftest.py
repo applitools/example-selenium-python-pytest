@@ -24,7 +24,6 @@ from selenium.webdriver import Chrome, ChromeOptions, Remote
 
 USE_ULTRAFAST_GRID = True
 USE_EXECUTION_CLOUD = False
-HEADLESS = False
 
 
 # --------------------------------------------------------------------------------
@@ -39,6 +38,17 @@ def api_key():
   Reads the Applitools API key from an environment variable.
   """
   return os.getenv('APPLITOOLS_API_KEY')
+
+
+@pytest.fixture(scope='session')
+def headless():
+  """
+  Reads the headless mode setting from an environment variable.
+  Uses headless mode for Continuous Integration (CI) execution.
+  Uses headed mode for local development.
+  """
+  h = os.getenv('HEADLESS', default='false')
+  return h.lower() == 'true'
 
 
 @pytest.fixture(scope='session')
@@ -114,14 +124,14 @@ def configuration(api_key: str, batch_info: BatchInfo):
 # --------------------------------------------------------------------------------
 
 @pytest.fixture(scope='function')
-def webdriver():
+def webdriver(headless: bool):
   """
   Creates a WebDriver object for Chrome.
   After the test function finishes execution, quits the browser.
   """
 
   options = ChromeOptions()
-  options.headless = HEADLESS
+  options.headless = headless
 
   if USE_EXECUTION_CLOUD:
     driver = Remote(
