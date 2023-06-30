@@ -131,7 +131,7 @@ def webdriver(headless: bool):
   """
 
   options = ChromeOptions()
-  options.headless = headless
+  options.add_argument("--headless=new")
 
   if USE_EXECUTION_CLOUD:
     driver = Remote(
